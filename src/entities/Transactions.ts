@@ -22,6 +22,7 @@ export class Transactions extends BaseEntity {
     })
     amount: number
 
+    // one client has many transactions 
     // relationship between transaction and client 
     // need to create relation in 'client' table 
     // and also need to create relation in 'transaction' table 

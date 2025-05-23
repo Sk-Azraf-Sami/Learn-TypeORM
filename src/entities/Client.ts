@@ -1,6 +1,7 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, Transaction, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, OneToMany, PrimaryColumn, Transaction, UpdateDateColumn } from "typeorm";
 import { Person } from "./utils/Person";
 import { Transactions } from "./Transactions";
+import { Banker } from "./Banker";
 
 // Decorator 
 @Entity('client')
@@ -29,9 +30,18 @@ export class Client extends Person {
     family_members: string[];
 
     // relationship between transaction and client 
+    // one client has many transactions 
     @OneToMany(
         () => Transactions,
         transaction => transaction.client
     )
     transaction: Transactions[]; 
+
+    // one client has many bankers 
+    // one banker has many clients
+    @ManyToMany(
+        () => Banker,
+    )
+    bankers: Banker[]
+
 }
