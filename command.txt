@@ -1,0 +1,158 @@
+azraf-sami@rbd-int-b2l2:~/Documents/learn-typeORM$ npm init -y
+Wrote to /home/azraf-sami/Documents/learn-typeORM/package.json:
+
+{
+  "name": "learn-typeorm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
+
+
+
+azraf-sami@rbd-int-b2l2:~/Documents/learn-typeORM$ npm install --save-dev typescript
+
+added 1 package, and audited 2 packages in 1s
+
+found 0 vulnerabilities
+azraf-sami@rbd-int-b2l2:~/Documents/learn-typeORM$ npx tsc --init
+
+Created a new tsconfig.json with:                                                                
+                                                                                              TS 
+  target: es2016
+  module: commonjs
+  strict: true
+  esModuleInterop: true
+  skipLibCheck: true
+  forceConsistentCasingInFileNames: true
+
+
+You can learn more at https://aka.ms/tsconfig
+azraf-sami@rbd-int-b2l2:~/Documents/learn-typeORM$ npm install express @types/express pg ts-node 
+typeorm  
+
+added 182 packages, and audited 184 packages in 16s
+
+34 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+azraf-sami@rbd-int-b2l2:~/Documents/learn-typeORM$ npm install nodemon -g
+
+added 30 packages in 3s
+
+4 packages are looking for funding
+  run `npm fund` for details
+azraf-sami@rbd-int-b2l2:~/Documents/learn-typeORM$ 
+
+
+azraf-sami@rbd-int-b2l2:~$ sudo -u postgres psql
+Place your right index finger on the fingerprint reader
+psql (16.9 (Ubuntu 16.9-0ubuntu0.24.04.1))
+Type "help" for help.
+
+postgres=# ^C
+postgres=# quit
+azraf-sami@rbd-int-b2l2:~$ sudo -u postgres psql
+Place your right index finger on the fingerprint reader
+psql (16.9 (Ubuntu 16.9-0ubuntu0.24.04.1))
+Type "help" for help.
+
+postgres=# ALTER USER postgres WITH PASSWORD '1234'
+postgres-# CREATE DATABASE learn-typeorm 
+postgres-# \l
+                                                       List of databases
+   Name    |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |   Access privileges   
+-----------+----------+----------+-----------------+-------------+-------------+------------+-----------+-----------------------
+ postgres  | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ template0 | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+           |          |          |                 |             |             |            |           | postgres=CTc/postgres
+ template1 | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+           |          |          |                 |             |             |            |           | postgres=CTc/postgres
+(3 rows)
+
+postgres-# \l
+                                                       List of databases
+   Name    |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |   Access privileges   
+-----------+----------+----------+-----------------+-------------+-------------+------------+-----------+-----------------------
+ postgres  | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ template0 | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+           |          |          |                 |             |             |            |           | postgres=CTc/postgres
+ template1 | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+           |          |          |                 |             |             |            |           | postgres=CTc/postgres
+(3 rows)
+
+postgres-# CREATE DATABASE learn-typeorm;
+ERROR:  syntax error at or near "CREATE"
+LINE 2: CREATE DATABASE learn-typeorm 
+        ^
+postgres=# ;
+postgres=# CREATE DATABASE learn-typeorm;
+ERROR:  syntax error at or near "-"
+LINE 1: CREATE DATABASE learn-typeorm;
+                             ^
+postgres=# CREATE DATABASE learnTypeorm;
+CREATE DATABASE
+postgres=# \l
+                                                         List of databases
+     Name     |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |   Access privileges   
+--------------+----------+----------+-----------------+-------------+-------------+------------+-----------+-----------------------
+ learntypeorm | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ postgres     | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ template0    | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+              |          |          |                 |             |             |            |           | postgres=CTc/postgres
+ template1    | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+              |          |          |                 |             |             |            |           | postgres=CTc/postgres
+(4 rows)
+
+postgres=# /p
+postgres-# /q
+postgres-# quit
+Use \q to quit.
+postgres-# ^C
+postgres=# ^C
+postgres=# ^C
+postgres=# ^C
+postgres=# \q
+azraf-sami@rbd-int-b2l2:~$ sudo service postgresql start
+azraf-sami@rbd-int-b2l2:~$ psql -U postgres -d learnTypeorm
+psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  Peer authentication failed for user "postgres"
+azraf-sami@rbd-int-b2l2:~$ sudo -u postgres psql 
+psql (16.9 (Ubuntu 16.9-0ubuntu0.24.04.1))
+Type "help" for help.
+
+postgres=# \l
+                                                         List of databases
+     Name     |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |   Access privileges   
+--------------+----------+----------+-----------------+-------------+-------------+------------+-----------+-----------------------
+ learntypeorm | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ postgres     | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ template0    | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+              |          |          |                 |             |             |            |           | postgres=CTc/postgres
+ template1    | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | =c/postgres          +
+              |          |          |                 |             |             |            |           | postgres=CTc/postgres
+(4 rows)
+
+postgres=# \learntypeorm
+invalid command \learntypeorm
+Try \? for help.
+postgres=# \c postgres=# \l
+                                                         List of databases
+     Name     |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |   Access privileges   
+--------------+----------+----------+-----------------+-------------+-------------+------------+-----------+-----------------------
+ learntypeorm | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ postgres     | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
+ template0    | postgres | UTF8     | libc            | en_US.UTF-8 | en_US.UTF^C                                                  
+                                                                                                                                  
+postgres=# \c learntypeorm
+You are now connected to database "learntypeorm" as user "postgres".
+learntypeorm=# ALTER USER postgres WITH PASSWORD '1234';
+ALTER ROLE
+learntypeorm=# 
