@@ -1,5 +1,6 @@
 import  {DataSource} from 'typeorm'
 import { Client } from './entities/Client'
+import { Banker } from './entities/Banker'
 
 const AppDataSource = new DataSource({
     type: "postgres",
@@ -21,7 +22,7 @@ const AppDataSource = new DataSource({
     update the database tables to match 
     your entity classes every time the app starts.
     */
-    entities: [Client], 
+    entities: [Client, Banker], 
     synchronize: true
 })
 

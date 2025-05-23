@@ -1,33 +1,10 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Person } from "./utils/Person";
 
 // Decorator 
 @Entity('client')
-export class Client extends BaseEntity {
-    @PrimaryColumn()
-    id: number; 
-    
-    @Column()
-    first_name: string;
-
-    @Column()
-    last_name: string; 
-
-    @Column({
-        unique: true
-    })
-    email: string; 
-
-    @Column({
-        unique: true,
-        length: 10
-    })
-    card_number: string; 
-
-    @Column({
-        type: "numeric"
-    })
-    balance: number; 
-
+export class Client extends Person {
+  
     @Column({
         default: true, 
         // differnt name in class from database 
@@ -49,10 +26,4 @@ export class Client extends BaseEntity {
         default: []
     })
     family_members: string[];
-
-    @CreateDateColumn()
-    created_at: Date; 
-
-    @UpdateDateColumn()
-    updated_at: Date; 
 }
