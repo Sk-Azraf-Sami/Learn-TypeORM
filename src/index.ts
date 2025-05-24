@@ -2,6 +2,10 @@ import  {DataSource} from 'typeorm'
 import { Client } from './entities/Client'
 import { Banker } from './entities/Banker'
 import { Transactions } from './entities/Transactions'
+import express from 'express'
+
+const app = express(); 
+app.use(express.json()); 
 
 const AppDataSource = new DataSource({
     type: "postgres",
@@ -30,6 +34,11 @@ const AppDataSource = new DataSource({
 AppDataSource.initialize()
     .then(()=>{
         console.log("Data Source has been initialized")
+
+        // start express server with DB connection 
+        app.listen(8080, ()=>{
+            console.log('Server running on port 8080');
+        })
     })
     .catch((err)=>{
         console.error("Error during data source initialized", err)
