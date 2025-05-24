@@ -3,9 +3,9 @@ import { Client } from './entities/Client'
 import { Banker } from './entities/Banker'
 import { Transactions } from './entities/Transactions'
 import express from 'express'
+import { createClientRouter } from './routes/create_client'
 
 const app = express(); 
-app.use(express.json()); 
 
 const AppDataSource = new DataSource({
     type: "postgres",
@@ -35,6 +35,9 @@ AppDataSource.initialize()
     .then(()=>{
         console.log("Data Source has been initialized")
 
+        app.use(express.json()); 
+        app.use(createClientRouter); 
+        
         // start express server with DB connection 
         app.listen(8080, ()=>{
             console.log('Server running on port 8080');

@@ -6,7 +6,11 @@ import { Banker } from "./Banker";
 // Decorator 
 @Entity('client')
 export class Client extends Person {
-  
+    @Column({
+       type: "numeric"
+    })
+    balance: number; 
+
     @Column({
         default: true, 
         // differnt name in class from database 
