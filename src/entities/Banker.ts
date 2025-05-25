@@ -16,6 +16,12 @@ export class Banker extends Person {
     // one banker has many clients 
     @ManyToMany(
         () => Client,
+        //! Need to know why? 
+        // it still work for relational constraints 
+        // if I don't use it. 
+        {
+            "cascade": true
+        }
     )
     @JoinTable({
         name: 'bankers_clients', 

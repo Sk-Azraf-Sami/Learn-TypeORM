@@ -37,7 +37,10 @@ export class Client extends Person {
     // one client has many transactions 
     @OneToMany(
         () => Transactions,
-        transaction => transaction.client
+        transaction => transaction.client,
+        {
+            "onDelete": "CASCADE"
+        }
     )
     transaction: Transactions[]; 
 
@@ -45,6 +48,9 @@ export class Client extends Person {
     // one banker has many clients
     @ManyToMany(
         () => Banker,
+        {
+            "cascade": true
+        }
     )
     bankers: Banker[]
 

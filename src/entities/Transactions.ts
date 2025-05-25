@@ -28,7 +28,11 @@ export class Transactions extends BaseEntity {
     // and also need to create relation in 'transaction' table 
     @ManyToOne(
         () => Client,
-        client => client.transaction
+        client => client.transaction,
+        // delete for relational constraints 
+        {
+            "onDelete": "CASCADE" 
+        }
     )
     @JoinColumn({
         name: 'clinet_id'
