@@ -5,6 +5,8 @@ import { Transactions } from './entities/Transactions'
 import express from 'express'
 import { createClientRouter } from './routes/create_client'
 import { createBankerRouter } from './routes/create_banker'
+import { createTransactionRouter } from './routes/create_transaction'
+import { connectBankerToClientRouter } from './routes/connect_banker_to_client'
 
 const app = express(); 
 
@@ -39,6 +41,8 @@ AppDataSource.initialize()
         app.use(express.json()); 
         app.use(createClientRouter); 
         app.use(createBankerRouter); 
+        app.use(createTransactionRouter);
+        app.use(connectBankerToClientRouter); 
         
         // start express server with DB connection 
         app.listen(8080, ()=>{
